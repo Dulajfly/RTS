@@ -133,7 +133,12 @@ ModelImporter:
     4300000: DragonSoulEater
     9500000: //RootNode
     13700000: DragonSoulEater
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 0d6b32f7a1327524f8e933d4e0c86b09, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
