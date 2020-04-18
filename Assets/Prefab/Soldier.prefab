@@ -173,6 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8691826937220451302}
   - component: {fileID: 8691826937227945010}
+  - component: {fileID: 1302591716151829951}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -215,6 +216,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1302591716151829951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8691826937220683654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b400b8ba90cc32f45bd32a5a285e6b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8691826937220683664
 GameObject:
   m_ObjectHideFlags: 0
