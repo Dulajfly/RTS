@@ -51,7 +51,7 @@ public class CameraControl : MonoBehaviour
             if (mousePosScreen.x < cursorTreshold) movementDirection.x -= 1 - mousePosScreen.x / cursorTreshold;
             if (mousePosScreen.x > 1 - cursorTreshold) movementDirection.x += 1 - (1-mousePosScreen.x) / cursorTreshold;
             if (mousePosScreen.y < cursorTreshold) movementDirection.y -= 1 - mousePosScreen.y / cursorTreshold;
-            if (mousePosScreen.y > 1 - cursorTreshold) movementDirection.y += 1 - (1-mousePosScreen.y) / cursorTreshold;
+            //if (mousePosScreen.y > 1 - cursorTreshold) movementDirection.y += 1 - (1-mousePosScreen.y) / cursorTreshold;
         }
 
         var deltaPosition = new Vector3(movementDirection.x, 0, movementDirection.y);
