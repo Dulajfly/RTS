@@ -173,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8691826937220451302}
   - component: {fileID: 8691826937227945010}
-  - component: {fileID: 1302591716151829951}
+  - component: {fileID: 3368000186898946953}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -216,7 +216,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1302591716151829951
+--- !u!114 &3368000186898946953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,9 +225,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8691826937220683654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b400b8ba90cc32f45bd32a5a285e6b74, type: 3}
+  m_Script: {fileID: 11500000, guid: 93ffa4163c7aa1e4ea3bfc0c088e9ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  hp: 0
+  hpMax: 100
+  hpBarPrefab: {fileID: 3410204298230153344, guid: 2d6d3a0e8122c18459eb7eb00fc3f889,
+    type: 3}
 --- !u!1 &8691826937220683664
 GameObject:
   m_ObjectHideFlags: 0

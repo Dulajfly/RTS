@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CameraControl : MonoBehaviour
 {
+    
+
     public float cameraSpeed, zoomSpeed, groundHeight;
     public Vector2 cameraHeightMinMax;
     public Vector2 cameraRotationMinMax;
@@ -20,7 +22,8 @@ public class CameraControl : MonoBehaviour
     bool isCursorInGameScreen;
 
     Rect selectionRect, boxRect;
-    
+    List<Unit> selectedUnits = new List<Unit>();
+
     private void Awake()
     {
         selectionBox = GetComponentInChildren<Image>(true).transform as RectTransform;
@@ -91,6 +94,8 @@ public class CameraControl : MonoBehaviour
             boxRect = AbsRect(selectionRect);
             selectionBox.anchoredPosition = boxRect.position;
             selectionBox.sizeDelta = boxRect.size;
+
+            UpdateSelecting();
         }
         
     }
@@ -108,6 +113,28 @@ public class CameraControl : MonoBehaviour
             rect.height *= -1;
         }
         return rect;
+    }
+    void UpdateSelecting()
+    {
+        selectedUnits.Clear();
+        foreach(Unit unit in Unit.SelectableUnits)
+        {
+            Debug.Log(unit.ToString());
+            if (!unit) continue;
+            var pos = unit.transform.position;
+            var posScreen = camera.WorldToScreenPoint(pos);
+            bool inRect = IsPointInRect(boxRect, posScreen);
+            (unit as ISelectable).SetSelected(inRect);
+            if (inRect)
+            {
+                selectedUnits.Add(unit);
+            }
+        }
+    }
+    bool IsPointInRect(Rect rect, Vector2 point)
+    {
+        return point.x >= rect.position.x && point.x <= (rect.position.x + rect.size.x) &&
+               point.y >= rect.position.y && point.y <= (rect.position.y + rect.size.y);
     }
 
 }
