@@ -10,13 +10,13 @@ public class HealthBar : MonoBehaviour
     [SerializeField]
     Vector3 offset;
 
-    Slider Slider;
+    Slider slider;
     Unit unit;
     Transform cameraTransform;
 
     private void Awake()
     {
-        Slider = GetComponent<Slider>();
+        slider = GetComponent<Slider>();
         unit = GetComponentInParent<Unit>();
         var canvas = GameObject.FindGameObjectWithTag(HP_CANVAS);
 
@@ -31,7 +31,7 @@ public class HealthBar : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        Slider.value = unit.HealthPercent;
+        slider.value = unit.HealthPercent;
         transform.position = unit.transform.position + offset;
         transform.LookAt(cameraTransform);
 
