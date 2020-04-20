@@ -239,7 +239,7 @@ MonoBehaviour:
   attackCooldown: 1
   attackDamage: 10
   stoppingDistance: 1
-  shootDuration: 0.098
+  shootDuration: 0.15
   muzzleEffect: {fileID: 8975896035083663984, guid: b4309f7b252bedc498212ee1eb282d5a,
     type: 3}
   impactEffect: {fileID: 1183301981824920514, guid: 7d527ba30fbac214fa24b1ced8327ebf,
@@ -1016,6 +1016,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Impact
       objectReference: {fileID: 0}
+    - target: {fileID: 1183301981824920514, guid: 7d527ba30fbac214fa24b1ced8327ebf,
+        type: 3}
+      propertyPath: scalingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183301981824920514, guid: 7d527ba30fbac214fa24b1ced8327ebf,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183301981824920514, guid: 7d527ba30fbac214fa24b1ced8327ebf,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183301981824920514, guid: 7d527ba30fbac214fa24b1ced8327ebf,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6031964397837094334, guid: 7d527ba30fbac214fa24b1ced8327ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1070,26 +1090,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1183301981824920514, guid: 7d527ba30fbac214fa24b1ced8327ebf,
-        type: 3}
-      propertyPath: scalingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1183301981824920514, guid: 7d527ba30fbac214fa24b1ced8327ebf,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1183301981824920514, guid: 7d527ba30fbac214fa24b1ced8327ebf,
-        type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1183301981824920514, guid: 7d527ba30fbac214fa24b1ced8327ebf,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 966609570458007740, guid: 7d527ba30fbac214fa24b1ced8327ebf,
         type: 3}

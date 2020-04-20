@@ -34,11 +34,9 @@ public class Unit : MonoBehaviour
     protected HealthBar healthBar;
     protected Task task = Task.idle;
     protected NavMeshAgent nav;
-
-    float attackTimer;
-
-    Animator animator;
+    protected Animator animator;
     
+    float attackTimer;
 
     protected virtual void Awake()
     {
@@ -97,6 +95,15 @@ public class Unit : MonoBehaviour
         Animate();
     }
 
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+
+    }
+    protected virtual void OnTriggerExit(Collider other)
+    {
+
+    }
+
     protected virtual void Idling() 
     {
         nav.velocity = Vector3.zero;
@@ -143,7 +150,7 @@ public class Unit : MonoBehaviour
         {
             nav.velocity = Vector3.zero;
             transform.LookAt(target);
-            float distance = Vector3.Magnitude(nav.destination - transform.position);
+            float distance = Vector3.Magnitude(target.position - transform.position);
             if (distance <= attackDistance)
             {
                 if((attackTimer -= Time.deltaTime) <= 0)
@@ -176,22 +183,49 @@ public class Unit : MonoBehaviour
 
     public virtual void Attack()
     {
-        animator.SetTrigger(animator_attack);
-        attackTimer = attackCooldown;
+        Unit unit = target.GetComponent<Unit>();
+        if (unit && unit.IsAlive)
+        {
+            unit.ReciveDamage(attackDamage, transform.position);
+            //unit.hp -= attackDamage;
+            animator.SetTrigger(animator_attack);
+            attackTimer = attackCooldown;
+        }
+        else
+            target = null;
+        
     }
     public virtual void DealDamage()
     {
         if (target)
         {
             Unit unit = target.GetComponent<Unit>();
-            if (unit && unit.IsAlive)
+            if (unit)
             {
-                unit.hp -= attackDamage;
+                unit.ReciveDamage(attackDamage, transform.position);
+                //unit.hp -= attackDamage;
             }
-            else
-                target = null;
         }
     }
+
+    public virtual void ReciveDamage(float damage, Vector3 damageDealerPosition)
+    {
+        if (IsAlive)
+        {
+            hp -= damage;
+        }
+        if (!IsAlive)
+        {
+            healthBar.gameObject.SetActive(false);
+            //enabled = false;
+            nav.enabled = false;
+            foreach(var collider in GetComponents<Collider>())
+            {
+                collider.enabled = false;
+            }
+        }
+    }
+
     protected virtual void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
