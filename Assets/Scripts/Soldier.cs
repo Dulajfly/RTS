@@ -60,8 +60,6 @@ public class Soldier : Unit, ISelectable
         Vector3 start = muzzleEffect.transform.position;
         Vector3 direction = transform.forward;
 
-
-
         RaycastHit hit;
         if (Physics.Raycast(start, direction, out hit, attackDistance, shootingLayerMask))
         {
@@ -86,6 +84,8 @@ public class Soldier : Unit, ISelectable
         lightEffect.enabled = true;
         muzzleEffect.Play();
         Invoke("EndShootEffect", shootDuration);
+        //lightEffect.enabled = false;
+        //lineEffect.enabled = false;
     }
     void EndShootEffect()
     {
@@ -93,6 +93,7 @@ public class Soldier : Unit, ISelectable
         lightEffect.enabled = false;
         lineEffect.enabled = false;
     }
+    
 
     public override void ReciveDamage(float damage, Vector3 damageDealerPosition)
     {

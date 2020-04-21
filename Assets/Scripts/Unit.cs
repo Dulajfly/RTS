@@ -223,6 +223,7 @@ public class Unit : MonoBehaviour
             {
                 collider.enabled = false;
             }
+            if (this is ISelectable) selectableUnits.Remove(this as ISelectable);
         }
     }
 

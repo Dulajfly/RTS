@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CameraControl : MonoBehaviour
 {
+    static CameraControl cameraControl;
+
     public float cameraSpeed, zoomSpeed, groundHeight;
     public Vector2 cameraHeightMinMax;
     public Vector2 cameraRotationMinMax;
@@ -19,10 +21,11 @@ public class CameraControl : MonoBehaviour
     bool isCursorInGameScreen;
 
     Rect selectionRect, boxRect;
-    List<Unit> selectedUnits = new List<Unit>();
+    List<ISelectable> selectedUnits = new List<ISelectable>();
 
     private void Awake()
     {
+        cameraControl = this;
         selectionBox = GetComponentInChildren<Image>(true).transform as RectTransform;
         camera = GetComponent<Camera>();
         selectionBox.gameObject.SetActive(false);
@@ -91,8 +94,10 @@ public class CameraControl : MonoBehaviour
             boxRect = AbsRect(selectionRect);
             selectionBox.anchoredPosition = boxRect.position;
             selectionBox.sizeDelta = boxRect.size;
-
-            UpdateSelecting();
+            if(boxRect.size.x != 0 || boxRect.size.y != 0)
+            {
+                UpdateSelecting();
+            }
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -118,17 +123,18 @@ public class CameraControl : MonoBehaviour
     void UpdateSelecting()
     {
         selectedUnits.Clear();
-        foreach(Unit unit in Unit.SelectableUnits)
+        foreach(ISelectable selectable in Unit.SelectableUnits)
         {
             //Debug.Log(unit.ToString());
-            if (!unit || !unit.IsAlive) continue;
-            var pos = unit.transform.position;
+            if (selectable == null) continue;
+            MonoBehaviour monoBehaviour = selectable as MonoBehaviour;
+            var pos = monoBehaviour.transform.position;
             var posScreen = camera.WorldToScreenPoint(pos);
             bool inRect = IsPointInRect(boxRect, posScreen);
-            (unit as ISelectable).SetSelected(inRect);
+            (selectable as ISelectable).SetSelected(inRect);
             if (inRect)
             {
-                selectedUnits.Add(unit);
+                selectedUnits.Add(selectable);
             }
         }
     }
@@ -159,14 +165,19 @@ public class CameraControl : MonoBehaviour
                 //Debug.Log(rayHit.collider);
                 commandData = rayHit.collider.gameObject.GetComponent<Unit>();
             }
-            GiveCommands(commandData);
+            GiveCommands(commandData, "Command");
         }
     }
-    void GiveCommands(object dataCommand)
+    void GiveCommands(object dataCommand, string commandName)
     {
-        foreach(Unit unit in selectedUnits)
+        foreach(ISelectable selectable in selectedUnits)
         {
-            unit.SendMessage("Command", dataCommand, SendMessageOptions.DontRequireReceiver);
+            (selectable as MonoBehaviour).SendMessage(commandName, dataCommand, SendMessageOptions.DontRequireReceiver);
         }
+    }
+
+    public static void SpawnUnits(GameObject prefab)
+    {
+        cameraControl.GiveCommands(prefab, "Spawn");
     }
 }

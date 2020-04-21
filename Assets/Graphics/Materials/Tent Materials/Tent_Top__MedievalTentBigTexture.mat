@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TentSidesCol2__MedievalTentBigTexture
+  m_Name: Tent_Top__MedievalTentBigTexture
   m_Shader: {fileID: 2, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -24,9 +24,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ddd01dd17d0511d4285563e48841433d, type: 3}
+        m_Texture: {fileID: 2800000, guid: c2c3f56cf81348e448c2decbb7d45e22, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - _Color: {r: 0.75, g: 0.36397058, b: 0.36397058, a: 1}
+    - _Color: {r: 0.509434, g: 0.39168745, b: 0.34117648, a: 1}
