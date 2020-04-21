@@ -129,7 +129,11 @@ public class Dragon : Unit
     {
         base.OnDrawGizmosSelected();
         Gizmos.color = Color.blue;
-        startPoint = transform.position;
+        if (!Application.isPlaying) // tam gdzie sie respi tam ma obszar do patrolowania
+        {
+            startPoint = transform.position;
+        }
+        //startPoint = transform.position; // obszar porusza sie z nim
         Gizmos.DrawWireSphere(startPoint, patrolRadius);
     }
 }
