@@ -721,6 +721,8 @@ GameObject:
   - component: {fileID: 7710245373007412665}
   - component: {fileID: 7710245373007412664}
   - component: {fileID: 7710245373007412666}
+  - component: {fileID: 4885541140898421156}
+  - component: {fileID: 232554180771445961}
   m_Layer: 11
   m_Name: Tent
   m_TagString: Untagged
@@ -774,6 +776,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBarPrefab: {fileID: 3410204298230153344, guid: 36ae7de984b55ce42bf814fa7d40e0bd,
     type: 3}
-  soldierPrefab: {fileID: 0}
   spawnPoint: {fileID: 7710245371776106209}
   flag: {fileID: 129556162203211547}
+--- !u!114 &4885541140898421156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7710245373007412663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a58c1b7d2af9c4f9100e425e1e0e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: c6eaac9d928c3b94a891e9e788cafcc6, type: 3}
+  cost: 1000
+--- !u!208 &232554180771445961
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7710245373007412663}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 5.81, y: 7.55, z: 5.81}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
